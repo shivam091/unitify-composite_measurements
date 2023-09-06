@@ -53,9 +53,9 @@ module Unitify
       M_REGEX        = /(?:m|meter(?:s)?|metre(?:s)?)/.freeze
       CM_REGEX       = /(?:cm|centimeter(?:s)?|centimetre(?:s)?)/.freeze
 
-      FT_IN_REGEX    = /\A#{ANY_DIGIT_WITH_T_SPACES}#{FT_REGEX}#{ANY_DIGIT_WITH_LT_SPACES}#{IN_REGEX}\z/.freeze
-      M_CM_REGEX     = /\A#{ANY_DIGIT_WITH_T_SPACES}#{M_REGEX}#{ANY_DIGIT_WITH_LT_SPACES}#{CM_REGEX}\z/.freeze
-      FT_IN_CM_REGEX = /\A#{ANY_DIGIT_WITH_T_SPACES}#{FT_REGEX}#{ANY_DIGIT_WITH_LT_SPACES}#{IN_REGEX}#{ANY_DIGIT_WITH_LT_SPACES}#{CM_REGEX}\z/.freeze
+      FT_IN_REGEX    = /\A#{NUMBER_WITH_T_SPACES}#{FT_REGEX}#{NUMBER_WITH_LT_SPACES}#{IN_REGEX}\z/.freeze
+      M_CM_REGEX     = /\A#{NUMBER_WITH_T_SPACES}#{M_REGEX}#{NUMBER_WITH_LT_SPACES}#{CM_REGEX}\z/.freeze
+      FT_IN_CM_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{FT_REGEX}#{NUMBER_WITH_LT_SPACES}#{IN_REGEX}#{NUMBER_WITH_LT_SPACES}#{CM_REGEX}\z/.freeze
     end
   end
 end
