@@ -31,6 +31,64 @@ Or otherwise simply install it yourself as:
 
 `$ gem install unitify-composite_measurements`
 
+## Usage
+
+Each packaged parser includes the `#parse` method for parsing composite measurements.
+You can use an appropriate parser to parse measurements.
+
+This gem internally uses [`unitify`](https://github.com/shivam091/unitify) to
+perform conversions and arithmetic operations.
+
+Any [alias of the units](https://github.com/shivam091/unitify/blob/main/units.md) can be used to build a supported composite measurements.
+The final result of composite measurements is returned in the leftmost unit after parsing.
+
+```ruby
+Unitify::CompositeMeasurements::Length.parse("5 feet 6 inches")
+> #<Unitify::Length: 5.5 #<Unitify::Unit: ft (', feet, foot)>>
+Unitify::CompositeMeasurements::Volume.parse("2 litres 250 millilitres")
+> #<Unitify::Volume: 2.25 #<Unitify::Unit: l (L, liter, liters, litre, litres)>>
+Unitify::CompositeMeasurements::Weight.parse("8 pound 12 ounce")
+> #<Unitify::Weight: 8.75 #<Unitify::Unit: lb (#, lbm, lbs, pound, pound-mass, pounds)>>
+Unitify::CompositeMeasurements::Time.parse("12:60:60,60")
+> #<Unitify::Time: 13.016666683333334 #<Unitify::Unit: h (hour, hours, hr)>>
+```
+
+## Packaged parsers & supported composite measurements
+
+There are tons of composite measurements that are bundled with `unitify-composite_measurements`.
+
+**1. Unitify::CompositeMeasurements::Weight**
+- pounds-ounces (8 lb 12 oz)
+- stones-pounds (2 st 6 lb)
+
+**2. Unitify::CompositeMeasurements::Length**
+- feet-inches (5 ft 6 in)
+
+**3. Unitify::CompositeMeasurements::Volume**
+- litres-millilitres (2 l 250 ml)
+
+**4. Unitify::CompositeMeasurements::Time**
+- hours-minutes-seconds-microseconds (12:60:60,60)
+
+### Specifing units
+
+By default, `unitify-composite_measurements` ships with all the packaged parsers and this happens automatically
+when you require the gem in the following manner.
+
+```ruby
+require "unitify/composite_measurements"
+```
+
+You can also use parsers in your application as per your need as:
+
+```ruby
+require "unitify/composite_measurements/base"
+
+require "unitify/composite_measurements/length"
+require "unitify/composite_measurements/weight"
+require "unitify/composite_measurements/volume"
+```
+
 ## Contributing
 
 1. Fork it
