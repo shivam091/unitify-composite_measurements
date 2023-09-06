@@ -1,5 +1,7 @@
 ## [0.1.1](https://github.com/shivam091/unitify-composite_measurements/compare/v0.1.0...v0.1.1) - 2023-09-06
 
+### What's new
+
 - Added parser for length (5 ft 6 in).
 - Added parser for time (12:60:60,60).
 - Added parser for weight (8 lb 12 oz & 2 st 6 lb).
