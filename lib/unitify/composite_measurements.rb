@@ -2,11 +2,6 @@
 # -*- frozen_string_literal: true -*-
 # -*- warn_indent: true -*-
 
-require "unitify/base"
-require "unitify/unit_groups/all"
-require "unitify/composite_measurements/version"
+require "unitify/composite_measurements/base"
 
-module Unitify
-  module CompositeMeasurements
-  end
-end
+require "unitify/composite_measurements/length"
