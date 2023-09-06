@@ -37,9 +37,9 @@ module Unitify
 
       private
 
-      LB_REGEX    = /(?:#|lb|lbs|lbm|pound-mass|pound(?:s)?)/
-      OZ_REGEX    = /(?:oz|ounce(?:s)?)/
-      ST_REGEX    = /(?:st|stone(?:s)?)/
+      LB_REGEX    = /(?:#|lb|lbs|lbm|pound-mass|pound(?:s)?)/.freeze
+      OZ_REGEX    = /(?:oz|ounce(?:s)?)/.freeze
+      ST_REGEX    = /(?:st|stone(?:s)?)/.freeze
 
       LB_OZ_REGEX = /\A#{ANY_DIGIT_WITH_T_SPACES}#{LB_REGEX}#{ANY_DIGIT_WITH_LT_SPACES}#{OZ_REGEX}\z/.freeze
       ST_LB_REGEX = /\A#{ANY_DIGIT_WITH_T_SPACES}#{ST_REGEX}#{ANY_DIGIT_WITH_LT_SPACES}#{LB_REGEX}\z/.freeze

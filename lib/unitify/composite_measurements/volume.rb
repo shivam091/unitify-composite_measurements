@@ -28,8 +28,8 @@ module Unitify
 
       private
 
-      L_REGEX    = /(?:l|L|liter(?:s)?|litre(?:s)?)/
-      ML_REGEX   = /(?:ml|mL|milliliter(?:s)?|millilitre(?:s)?)/
+      L_REGEX    = /(?:l|L|liter(?:s)?|litre(?:s)?)/.freeze
+      ML_REGEX   = /(?:ml|mL|milliliter(?:s)?|millilitre(?:s)?)/.freeze
 
       L_ML_REGEX = /\A#{ANY_DIGIT_WITH_T_SPACES}#{L_REGEX}#{ANY_DIGIT_WITH_LT_SPACES}#{ML_REGEX}\z/.freeze
     end
