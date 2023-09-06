@@ -12,6 +12,7 @@ module Unitify
           case string
           when LB_OZ_REGEX then parse_lb_oz(string)
           when ST_LB_REGEX then parse_st_lb(string)
+          when KG_G_REGEX  then parse_kg_g(string)
           else                  raise Unitify::ParseError, string
           end
         end
@@ -33,6 +34,14 @@ module Unitify
             Unitify::Weight.new(stones, :st) + Unitify::Weight.new(pounds, :lb)
           end
         end
+
+        def parse_kg_g(string)
+          kilogrammes, grammes = string.match(KG_G_REGEX)&.captures
+
+          if kilogrammes && grammes
+            Unitify::Weight.new(kilogrammes, :kg) + Unitify::Weight.new(grammes, :g)
+          end
+        end
       end
 
       private
@@ -40,9 +49,12 @@ module Unitify
       LB_REGEX    = /(?:#|lb|lbs|lbm|pound-mass|pound(?:s)?)/.freeze
       OZ_REGEX    = /(?:oz|ounce(?:s)?)/.freeze
       ST_REGEX    = /(?:st|stone(?:s)?)/.freeze
+      G_REGEX     = /(?:g|gram(?:s)?|gramme(?:s)?)/.freeze
+      KG_REGEX    = /(?:kg|kilogram(?:s)?|kilogramme(?:s)?)/.freeze
 
       LB_OZ_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{LB_REGEX}#{NUMBER_WITH_LT_SPACES}#{OZ_REGEX}\z/.freeze
       ST_LB_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{ST_REGEX}#{NUMBER_WITH_LT_SPACES}#{LB_REGEX}\z/.freeze
+      KG_G_REGEX  = /\A#{NUMBER_WITH_T_SPACES}#{KG_REGEX}#{NUMBER_WITH_LT_SPACES}#{G_REGEX}\z/.freeze
     end
   end
 end

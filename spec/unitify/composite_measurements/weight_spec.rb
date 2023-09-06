@@ -27,6 +27,14 @@ RSpec.describe Unitify::CompositeMeasurements::Weight do
         expect(subject.parse("2 stones 6 pound").to_s).to eq("2.428571428571429 st")
         expect(subject.parse("2 stones 6 pounds").to_s).to eq("2.428571428571429 st")
       end
+
+      it "parses kilogrammes and grammes" do
+        expect(subject.parse("4 kg 500 g").to_s).to eq("4.5 kg")
+        expect(subject.parse("4 kilogramme 500 gramme").to_s).to eq("4.5 kg")
+        expect(subject.parse("4 kilogrammes 500 grammes").to_s).to eq("4.5 kg")
+        expect(subject.parse("4 kilogram 500 gram").to_s).to eq("4.5 kg")
+        expect(subject.parse("4 kilograms 500 grams").to_s).to eq("4.5 kg")
+      end
     end
 
     context "when invalid string is passed" do
@@ -44,6 +52,10 @@ RSpec.describe Unitify::CompositeMeasurements::Weight do
         expect { subject.parse("2 st 6 pound mass") }.to raise_error(Unitify::ParseError)
         expect { subject.parse("2 st 6 pound mass") }.to raise_error(Unitify::ParseError)
         expect { subject.parse("2 st 6 ##") }.to raise_error(Unitify::ParseError)
+
+        expect { subject.parse("4 kgs 500 gs") }.to raise_error(Unitify::ParseError)
+        expect { subject.parse("4 kilogramz 500 gramz") }.to raise_error(Unitify::ParseError)
+        expect { subject.parse("4 kilograms 500 gramss") }.to raise_error(Unitify::ParseError)
       end
     end
   end
