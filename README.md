@@ -39,8 +39,8 @@ You can use an appropriate parser to parse measurements.
 This gem internally uses [`unitify`](https://github.com/shivam091/unitify) to
 perform conversions and arithmetic operations.
 
-Any [alias of the units](https://github.com/shivam091/unitify/blob/main/units.md) can be used to build a supported composite measurements.
-The final result of composite measurements is returned in the leftmost unit after parsing.
+You can use any [alias of the units](https://github.com/shivam091/unitify/blob/main/units.md) to build a supported composite measurements.
+The final result of `#parse` is returned in the leftmost unit of your measurement.
 
 ```ruby
 Unitify::CompositeMeasurements::Length.parse("5 feet 6 inches")
@@ -60,17 +60,22 @@ There are tons of composite measurements that are bundled with `unitify-composit
 **1. Unitify::CompositeMeasurements::Weight**
 - pounds-ounces (8 lb 12 oz)
 - stones-pounds (2 st 6 lb)
+- kilogrammes-grammes (4 kg 500 g)
 
 **2. Unitify::CompositeMeasurements::Length**
 - feet-inches (5 ft 6 in)
+- metres-centimetres (6 m 50 cm)
+- feet-inches-centimetres (9 ft 6 in 2 cm)
 
 **3. Unitify::CompositeMeasurements::Volume**
 - litres-millilitres (2 l 250 ml)
 
 **4. Unitify::CompositeMeasurements::Time**
 - hours-minutes-seconds-microseconds (12:60:60,60)
+- hours-minutes (3 h 45 min)
+- days-hours-minutes (7 d 12 h 15 min)
 
-### Specifing units
+### Specifing parsers
 
 By default, `unitify-composite_measurements` ships with all the packaged parsers and this happens automatically
 when you require the gem in the following manner.

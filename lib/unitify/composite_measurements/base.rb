@@ -9,9 +9,9 @@ module Unitify
   module CompositeMeasurements
     private
 
-    ANY_DIGIT                = /(\d+)/.freeze
+    ANY_NUMBER                = /(\d+)/.freeze
     SPACES                   = /\s*/.freeze
-    ANY_DIGIT_WITH_T_SPACES  = /#{ANY_DIGIT}#{SPACES}/.freeze
-    ANY_DIGIT_WITH_LT_SPACES = /#{SPACES}#{ANY_DIGIT}#{SPACES}/.freeze
+    NUMBER_WITH_T_SPACES     = /#{ANY_NUMBER}#{SPACES}/.freeze
+    NUMBER_WITH_LT_SPACES    = /#{SPACES}#{ANY_NUMBER}#{SPACES}/.freeze
   end
 end

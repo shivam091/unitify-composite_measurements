@@ -9,13 +9,13 @@ RSpec.describe Unitify::CompositeMeasurements::Volume do
 
   describe "#parse" do
     context "when valid string is passed" do
-      it "parses liters and milliliters" do
+      it "parses litres and millilitres" do
+        expect(subject.parse("2 l 250 ml").to_s).to eq("2.25 l")
+        expect(subject.parse("2 L 250 mL").to_s).to eq("2.25 l")
         expect(subject.parse("2 liter 250 milliliter").to_s).to eq("2.25 l")
         expect(subject.parse("2 liters 250 milliliters").to_s).to eq("2.25 l")
         expect(subject.parse("2 litre 250 millilitre").to_s).to eq("2.25 l")
         expect(subject.parse("2 litres 250 millilitres").to_s).to eq("2.25 l")
-        expect(subject.parse("2 l 250 ml").to_s).to eq("2.25 l")
-        expect(subject.parse("2 L 250 mL").to_s).to eq("2.25 l")
       end
     end
 

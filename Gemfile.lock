@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    unitify-composite_measurements (0.1.1)
+    unitify-composite_measurements (0.1.2)
       activesupport (~> 7.0)
       unitify (~> 3)
 

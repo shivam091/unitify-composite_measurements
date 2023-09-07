@@ -10,15 +10,15 @@ module Unitify
       class << self
         def parse(string)
           case string
-          when L_ML_REGEX then parse_l_ml(string)
-          else                 raise Unitify::ParseError, string
+          when LITRES_MILLILITRES_REGEX then parse_litres_millilitres(string)
+          else                               raise Unitify::ParseError, string
           end
         end
 
         private
 
-        def parse_l_ml(string)
-          litre, millilitres = string.match(L_ML_REGEX)&.captures
+        def parse_litres_millilitres(string)
+          litre, millilitres = string.match(LITRES_MILLILITRES_REGEX)&.captures
 
           if litre && millilitres
             Unitify::Volume.new(litre, :l) + Unitify::Volume.new(millilitres, :ml)
@@ -28,10 +28,10 @@ module Unitify
 
       private
 
-      L_REGEX    = /(?:l|L|liter(?:s)?|litre(?:s)?)/
-      ML_REGEX   = /(?:ml|mL|milliliter(?:s)?|millilitre(?:s)?)/
+      LITRES_UNIT_REGEX      = /(?:l|L|liter(?:s)?|litre(?:s)?)/.freeze
+      MILLILITRES_UNIT_REGEX = /(?:ml|mL|milliliter(?:s)?|millilitre(?:s)?)/.freeze
 
-      L_ML_REGEX = /\A#{ANY_DIGIT_WITH_T_SPACES}#{L_REGEX}#{ANY_DIGIT_WITH_LT_SPACES}#{ML_REGEX}\z/.freeze
+      LITRES_MILLILITRES_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{LITRES_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{MILLILITRES_UNIT_REGEX}\z/.freeze
     end
   end
 end
