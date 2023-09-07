@@ -61,19 +61,35 @@ There are tons of composite measurements that are bundled with `unitify-composit
 - pounds-ounces (8 lb 12 oz)
 - stones-pounds (2 st 6 lb)
 - kilogrammes-grammes (4 kg 500 g)
+- tonnes-kilogrammes (1 t 500 kg)
+- stones-pounds-ounces (14 st 2 lb 5 oz)
 
 **2. Unitify::CompositeMeasurements::Length**
 - feet-inches (5 ft 6 in)
 - metres-centimetres (6 m 50 cm)
+- kilometres-metres (6 m 50 cm)
+- miles-yards (20 mi 220 yd)
+- miles-yards-feet (2 mi 1760 yd 8800 ft)
 - feet-inches-centimetres (9 ft 6 in 2 cm)
 
 **3. Unitify::CompositeMeasurements::Volume**
 - litres-millilitres (2 l 250 ml)
 
 **4. Unitify::CompositeMeasurements::Time**
-- hours-minutes-seconds-microseconds (12:60:60,60)
 - hours-minutes (3 h 45 min)
+- minutes-seconds (10 min 90 s)
+- weeks-days (8 wk 3 d)
+- months-days (2 mo 60 d)
+- years-months (3 yr 4 mo)
+- quarters-months (3 qtr 3 mo)
+- fortnights-days (3 fn 42 d)
 - days-hours-minutes (7 d 12 h 15 min)
+- hours-minutes-seconds-microseconds (12:60:60,60)
+
+**5. Unitify::CompositeMeasurements::Area**
+- acres-square_meters (2 ac 200 m²)
+- square_feet-square_inches (7 ft² 48 in²)
+- square_feet-square_meters (500 ft² 46.45 m²)
 
 ### Specifing parsers
 
