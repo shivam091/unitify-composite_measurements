@@ -10,8 +10,8 @@ module Unitify
       class << self
         def parse(string)
           case string
-          when D_H_MIN_REGEX  then parse_d_h_min(string)
-          when H_MIN_REGEX    then parse_h_min(string)
+          when D_H_MIN_REGEX  then parse_days_hours_minutes(string)
+          when H_MIN_REGEX    then parse_hours_minutes(string)
           when DURATION_REGEX then parse_duration(string)
           else                     raise Unitify::ParseError, string
           end
@@ -29,7 +29,7 @@ module Unitify
             Unitify::Time.new((microseconds || 0), :μs)
         end
 
-        def parse_d_h_min(string)
+        def parse_days_hours_minutes(string)
           days, hours, minutes = string.match(D_H_MIN_REGEX)&.captures
 
           if days && hours && minutes
@@ -39,7 +39,7 @@ module Unitify
           end
         end
 
-        def parse_h_min(string)
+        def parse_hours_minutes(string)
           hours, minutes = string.match(H_MIN_REGEX)&.captures
 
           if hours && minutes

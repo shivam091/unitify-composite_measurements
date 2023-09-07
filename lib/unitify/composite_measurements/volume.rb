@@ -10,14 +10,14 @@ module Unitify
       class << self
         def parse(string)
           case string
-          when L_ML_REGEX then parse_l_ml(string)
+          when L_ML_REGEX then parse_litres_millilitres(string)
           else                 raise Unitify::ParseError, string
           end
         end
 
         private
 
-        def parse_l_ml(string)
+        def parse_litres_millilitres(string)
           litre, millilitres = string.match(L_ML_REGEX)&.captures
 
           if litre && millilitres

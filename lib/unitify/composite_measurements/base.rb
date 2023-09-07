@@ -11,7 +11,7 @@ module Unitify
 
     ANY_DIGIT                = /(\d+)/.freeze
     SPACES                   = /\s*/.freeze
-    NUMBER_WITH_T_SPACES  = /#{ANY_DIGIT}#{SPACES}/.freeze
-    NUMBER_WITH_LT_SPACES = /#{SPACES}#{ANY_DIGIT}#{SPACES}/.freeze
+    NUMBER_WITH_T_SPACES     = /#{ANY_DIGIT}#{SPACES}/.freeze
+    NUMBER_WITH_LT_SPACES    = /#{SPACES}#{ANY_DIGIT}#{SPACES}/.freeze
   end
 end

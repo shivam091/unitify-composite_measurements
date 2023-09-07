@@ -10,16 +10,16 @@ module Unitify
       class << self
         def parse(string)
           case string
-          when M_CM_REGEX     then parse_m_cm(string)
-          when FT_IN_REGEX    then parse_ft_in(string)
-          when FT_IN_CM_REGEX then parse_ft_in_cm(string)
+          when M_CM_REGEX     then parse_metres_centimetres(string)
+          when FT_IN_REGEX    then parse_feet_inches(string)
+          when FT_IN_CM_REGEX then parse_feet_inches_centimetres(string)
           else                     raise Unitify::ParseError, string
           end
         end
 
         private
 
-        def parse_m_cm(string)
+        def parse_metres_centimetres(string)
           metres, centimetres = string.match(M_CM_REGEX)&.captures
 
           if metres && centimetres
@@ -27,7 +27,7 @@ module Unitify
           end
         end
 
-        def parse_ft_in(string)
+        def parse_feet_inches(string)
           feet, inches = string.match(FT_IN_REGEX)&.captures
 
           if feet && inches
@@ -35,7 +35,7 @@ module Unitify
           end
         end
 
-        def parse_ft_in_cm(string)
+        def parse_feet_inches_centimetres(string)
           feet, inches, centimetres = string.match(FT_IN_CM_REGEX)&.captures
 
           if feet && inches && centimetres

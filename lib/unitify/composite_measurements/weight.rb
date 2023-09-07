@@ -10,16 +10,16 @@ module Unitify
       class << self
         def parse(string)
           case string
-          when LB_OZ_REGEX then parse_lb_oz(string)
-          when ST_LB_REGEX then parse_st_lb(string)
-          when KG_G_REGEX  then parse_kg_g(string)
+          when LB_OZ_REGEX then parse_pounds_ounces(string)
+          when ST_LB_REGEX then parse_stones_pounds(string)
+          when KG_G_REGEX  then parse_kilogrammes_grammes(string)
           else                  raise Unitify::ParseError, string
           end
         end
 
         private
 
-        def parse_lb_oz(string)
+        def parse_pounds_ounces(string)
           pounds, ounces = string.match(LB_OZ_REGEX)&.captures
 
           if pounds && ounces
@@ -27,7 +27,7 @@ module Unitify
           end
         end
 
-        def parse_st_lb(string)
+        def parse_stones_pounds(string)
           stones, pounds = string.match(ST_LB_REGEX)&.captures
 
           if stones && pounds
@@ -35,7 +35,7 @@ module Unitify
           end
         end
 
-        def parse_kg_g(string)
+        def parse_kilogrammes_grammes(string)
           kilogrammes, grammes = string.match(KG_G_REGEX)&.captures
 
           if kilogrammes && grammes
