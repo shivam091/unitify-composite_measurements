@@ -10,17 +10,17 @@ module Unitify
       class << self
         def parse(string)
           case string
-          when LB_OZ_REGEX then parse_pounds_ounces(string)
-          when ST_LB_REGEX then parse_stones_pounds(string)
-          when KG_G_REGEX  then parse_kilogrammes_grammes(string)
-          else                  raise Unitify::ParseError, string
+          when POUNDS_OUNCES_REGEX       then parse_pounds_ounces(string)
+          when STONES_POUNDS_REGEX       then parse_stones_pounds(string)
+          when KILOGRAMMES_GRAMMES_REGEX then parse_kilogrammes_grammes(string)
+          else                                raise Unitify::ParseError, string
           end
         end
 
         private
 
         def parse_pounds_ounces(string)
-          pounds, ounces = string.match(LB_OZ_REGEX)&.captures
+          pounds, ounces = string.match(POUNDS_OUNCES_REGEX)&.captures
 
           if pounds && ounces
             Unitify::Weight.new(pounds, :lb) + Unitify::Weight.new(ounces, :oz)
@@ -28,7 +28,7 @@ module Unitify
         end
 
         def parse_stones_pounds(string)
-          stones, pounds = string.match(ST_LB_REGEX)&.captures
+          stones, pounds = string.match(STONES_POUNDS_REGEX)&.captures
 
           if stones && pounds
             Unitify::Weight.new(stones, :st) + Unitify::Weight.new(pounds, :lb)
@@ -36,7 +36,7 @@ module Unitify
         end
 
         def parse_kilogrammes_grammes(string)
-          kilogrammes, grammes = string.match(KG_G_REGEX)&.captures
+          kilogrammes, grammes = string.match(KILOGRAMMES_GRAMMES_REGEX)&.captures
 
           if kilogrammes && grammes
             Unitify::Weight.new(kilogrammes, :kg) + Unitify::Weight.new(grammes, :g)
@@ -46,15 +46,15 @@ module Unitify
 
       private
 
-      LB_REGEX    = /(?:#|lb|lbs|lbm|pound-mass|pound(?:s)?)/.freeze
-      OZ_REGEX    = /(?:oz|ounce(?:s)?)/.freeze
-      ST_REGEX    = /(?:st|stone(?:s)?)/.freeze
-      G_REGEX     = /(?:g|gram(?:s)?|gramme(?:s)?)/.freeze
-      KG_REGEX    = /(?:kg|kilogram(?:s)?|kilogramme(?:s)?)/.freeze
+      POUNDS_UNIT_REGEX      = /(?:#|lb|lbs|lbm|pound-mass|pound(?:s)?)/.freeze
+      OUNCES_UNIT_REGEX      = /(?:oz|ounce(?:s)?)/.freeze
+      STONES_UNIT_REGEX      = /(?:st|stone(?:s)?)/.freeze
+      GRAMMES_UNIT_REGEX     = /(?:g|gram(?:s)?|gramme(?:s)?)/.freeze
+      KILOGRAMMES_UNIT_REGEX = /(?:kg|kilogram(?:s)?|kilogramme(?:s)?)/.freeze
 
-      LB_OZ_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{LB_REGEX}#{NUMBER_WITH_LT_SPACES}#{OZ_REGEX}\z/.freeze
-      ST_LB_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{ST_REGEX}#{NUMBER_WITH_LT_SPACES}#{LB_REGEX}\z/.freeze
-      KG_G_REGEX  = /\A#{NUMBER_WITH_T_SPACES}#{KG_REGEX}#{NUMBER_WITH_LT_SPACES}#{G_REGEX}\z/.freeze
+      POUNDS_OUNCES_REGEX       = /\A#{NUMBER_WITH_T_SPACES}#{POUNDS_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{OUNCES_UNIT_REGEX}\z/.freeze
+      STONES_POUNDS_REGEX       = /\A#{NUMBER_WITH_T_SPACES}#{STONES_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{POUNDS_UNIT_REGEX}\z/.freeze
+      KILOGRAMMES_GRAMMES_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{KILOGRAMMES_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{GRAMMES_UNIT_REGEX}\z/.freeze
     end
   end
 end
