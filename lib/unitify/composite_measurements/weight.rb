@@ -10,74 +10,74 @@ module Unitify
       class << self
         def parse(string)
           case string
-          when POUNDS_OUNCES_REGEX        then parse_pounds_ounces(string)
-          when STONES_POUNDS_REGEX        then parse_stones_pounds(string)
-          when STONES_POUNDS_OUNCES_REGEX then parse_stones_pounds_ounces(string)
-          when KILOGRAMMES_GRAMMES_REGEX  then parse_kilogrammes_grammes(string)
-          when TONNES_KILOGRAMMES_REGEX   then parse_tonnes_kilogrammes(string)
-          else                                 raise Unitify::ParseError, string
+          when POUND_OUNCE       then parse_pound_ounce(string)
+          when STONE_POUND       then parse_stone_pound(string)
+          when KILOGRAMME_GRAMME then parse_kilogramme_gramme(string)
+          when TONNE_KILOGRAMME  then parse_tonne_kilogramme(string)
+          when STONE_POUND_OUNCE then parse_stone_pound_ounce(string)
+          else                        raise Unitify::ParseError, string
           end
         end
 
         private
 
-        def parse_pounds_ounces(string)
-          pounds, ounces = string.match(POUNDS_OUNCES_REGEX)&.captures
+        def parse_pound_ounce(string)
+          pound, ounce = string.match(POUND_OUNCE)&.captures
 
-          if pounds && ounces
-            Unitify::Weight.new(pounds, :lb) + Unitify::Weight.new(ounces, :oz)
+          if pound && ounce
+            Unitify::Weight.new(pound, :lb) + Unitify::Weight.new(ounce, :oz)
           end
         end
 
-        def parse_stones_pounds(string)
-          stones, pounds = string.match(STONES_POUNDS_REGEX)&.captures
+        def parse_stone_pound(string)
+          stone, pound = string.match(STONE_POUND)&.captures
 
-          if stones && pounds
-            Unitify::Weight.new(stones, :st) + Unitify::Weight.new(pounds, :lb)
+          if stone && pound
+            Unitify::Weight.new(stone, :st) + Unitify::Weight.new(pound, :lb)
           end
         end
 
-        def parse_kilogrammes_grammes(string)
-          kilogrammes, grammes = string.match(KILOGRAMMES_GRAMMES_REGEX)&.captures
+        def parse_kilogramme_gramme(string)
+          kilogramme, gramme = string.match(KILOGRAMME_GRAMME)&.captures
 
-          if kilogrammes && grammes
-            Unitify::Weight.new(kilogrammes, :kg) + Unitify::Weight.new(grammes, :g)
+          if kilogramme && gramme
+            Unitify::Weight.new(kilogramme, :kg) + Unitify::Weight.new(gramme, :g)
           end
         end
 
-        def parse_tonnes_kilogrammes(string)
-          tonnes, kilogrammes = string.match(TONNES_KILOGRAMMES_REGEX)&.captures
+        def parse_tonne_kilogramme(string)
+          tonne, kilogramme = string.match(TONNE_KILOGRAMME)&.captures
 
-          if tonnes && kilogrammes
-            Unitify::Weight.new(tonnes, :t) + Unitify::Weight.new(kilogrammes, :kg)
+          if tonne && kilogramme
+            Unitify::Weight.new(tonne, :t) + Unitify::Weight.new(kilogramme, :kg)
           end
         end
 
-        def parse_stones_pounds_ounces(string)
-          stones, pounds, ounces = string.match(STONES_POUNDS_OUNCES_REGEX)&.captures
+        def parse_stone_pound_ounce(string)
+          stone, pound, ounce = string.match(STONE_POUND_OUNCE)&.captures
 
-          if stones && pounds && ounces
-            Unitify::Weight.new(stones, :st) +
-              Unitify::Weight.new(pounds, :lb) +
-              Unitify::Weight.new(ounces, :oz)
+          if stone && pound && ounce
+            Unitify::Weight.new(stone, :st) +
+              Unitify::Weight.new(pound, :lb) +
+              Unitify::Weight.new(ounce, :oz)
           end
         end
       end
 
       private
 
-      POUNDS_UNIT_REGEX      = /(?:#|lb|lbs|lbm|pound-mass|pound(?:s)?)/.freeze
-      OUNCES_UNIT_REGEX      = /(?:oz|ounce(?:s)?)/.freeze
-      STONES_UNIT_REGEX      = /(?:st|stone(?:s)?)/.freeze
-      GRAMMES_UNIT_REGEX     = /(?:g|gram(?:s)?|gramme(?:s)?)/.freeze
-      KILOGRAMMES_UNIT_REGEX = /(?:kg|kilogram(?:s)?|kilogramme(?:s)?)/.freeze
-      TONNES_UNIT_REGEX      = /(?:t|tonne(?:s)?|metric tonne(?:s)?)/.freeze
+      POUND_UNITS      = /(?:#|lb|lbs|lbm|pound-mass|pound(?:s)?)/.freeze
+      OUNCE_UNITS      = /(?:oz|ounce(?:s)?)/.freeze
+      STONE_UNITS      = /(?:st|stone(?:s)?)/.freeze
+      GRAMME_UNITS     = /(?:g|gram(?:s)?|gramme(?:s)?)/.freeze
+      KILOGRAMME_UNITS = /(?:kg|kilogram(?:s)?|kilogramme(?:s)?)/.freeze
+      TONNE_UNITS      = /(?:t|tonne(?:s)?|metric tonne(?:s)?)/.freeze
 
-      POUNDS_OUNCES_REGEX        = /\A#{NUMBER_WITH_T_SPACES}#{POUNDS_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{OUNCES_UNIT_REGEX}\z/.freeze
-      STONES_POUNDS_REGEX        = /\A#{NUMBER_WITH_T_SPACES}#{STONES_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{POUNDS_UNIT_REGEX}\z/.freeze
-      KILOGRAMMES_GRAMMES_REGEX  = /\A#{NUMBER_WITH_T_SPACES}#{KILOGRAMMES_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{GRAMMES_UNIT_REGEX}\z/.freeze
-      STONES_POUNDS_OUNCES_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{STONES_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{POUNDS_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{OUNCES_UNIT_REGEX}\z/.freeze
-      TONNES_KILOGRAMMES_REGEX   = /\A#{NUMBER_WITH_T_SPACES}#{TONNES_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{KILOGRAMMES_UNIT_REGEX}\z/.freeze
+      POUND_OUNCE       = /\A#{NUMBER_WITH_T_SPACES}#{POUND_UNITS}#{NUMBER_WITH_LT_SPACES}#{OUNCE_UNITS}\z/.freeze
+      STONE_POUND       = /\A#{NUMBER_WITH_T_SPACES}#{STONE_UNITS}#{NUMBER_WITH_LT_SPACES}#{POUND_UNITS}\z/.freeze
+      KILOGRAMME_GRAMME = /\A#{NUMBER_WITH_T_SPACES}#{KILOGRAMME_UNITS}#{NUMBER_WITH_LT_SPACES}#{GRAMME_UNITS}\z/.freeze
+      TONNE_KILOGRAMME  = /\A#{NUMBER_WITH_T_SPACES}#{TONNE_UNITS}#{NUMBER_WITH_LT_SPACES}#{KILOGRAMME_UNITS}\z/.freeze
+      STONE_POUND_OUNCE = /\A#{NUMBER_WITH_T_SPACES}#{STONE_UNITS}#{NUMBER_WITH_LT_SPACES}#{POUND_UNITS}#{NUMBER_WITH_LT_SPACES}#{OUNCE_UNITS}\z/.freeze
     end
   end
 end

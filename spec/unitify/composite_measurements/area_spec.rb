@@ -9,7 +9,7 @@ RSpec.describe Unitify::CompositeMeasurements::Area do
 
   describe "#parse" do
     context "when valid string is passed" do
-      it "parses acres and square metres" do
+      it "parses acre and square metre" do
         expect(subject.parse("2 ac 200 m²").to_s).to eq("2.049421076293433 ac")
         expect(subject.parse("2 acre 200 m2").to_s).to eq("2.049421076293433 ac")
         expect(subject.parse("2 acres 200 m^2").to_s).to eq("2.049421076293433 ac")
@@ -20,7 +20,7 @@ RSpec.describe Unitify::CompositeMeasurements::Area do
         expect(subject.parse("2 acres 200 square metres").to_s).to eq("2.049421076293433 ac")
       end
 
-      it "parses square feet and square inches" do
+      it "parses square foot and square inch" do
         expect(subject.parse("7 ft² 48 in²").to_s).to eq("7.333333333333333 ft²")
         expect(subject.parse("7 ft2 48 in2").to_s).to eq("7.333333333333333 ft²")
         expect(subject.parse("7 ft^2 48 in^2").to_s).to eq("7.333333333333333 ft²")
@@ -29,7 +29,7 @@ RSpec.describe Unitify::CompositeMeasurements::Area do
         expect(subject.parse("7 square feet 48 square inches").to_s).to eq("7.333333333333333 ft²")
       end
 
-      it "parses square feet and square metres" do
+      it "parses square foot and square metre" do
         expect(subject.parse("500 ft² 2 m²").to_s).to eq("521.5278208334194 ft²")
         expect(subject.parse("500 ft2 2 m2").to_s).to eq("521.5278208334194 ft²")
         expect(subject.parse("500 ft^2 2 m^2").to_s).to eq("521.5278208334194 ft²")

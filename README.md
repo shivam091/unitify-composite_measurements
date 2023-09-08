@@ -34,13 +34,13 @@ Or otherwise simply install it yourself as:
 ## Usage
 
 Each packaged parser includes the `#parse` method for parsing composite measurements.
-You can use an appropriate parser to parse measurements.
+You can use an appropriate parser to parse measurements. The final result of `#parse`
+is returned in the leftmost unit of your measurement.
 
 This gem internally uses [`unitify`](https://github.com/shivam091/unitify) to
-perform conversions and arithmetic operations.
-
-You can use any [alias of the units](https://github.com/shivam091/unitify/blob/main/units.md) to build a supported composite measurements.
-The final result of `#parse` is returned in the leftmost unit of your measurement.
+perform conversions and arithmetic operations. You can use any
+[alias of the units](https://github.com/shivam091/unitify/blob/main/units.md) to build a
+supported composite measurements.
 
 ```ruby
 Unitify::CompositeMeasurements::Length.parse("5 feet 6 inches")
@@ -58,38 +58,38 @@ Unitify::CompositeMeasurements::Time.parse("12:60:60,60")
 There are tons of composite measurements that are bundled with `unitify-composite_measurements`.
 
 **1. Unitify::CompositeMeasurements::Weight**
-- pounds-ounces (8 lb 12 oz)
-- stones-pounds (2 st 6 lb)
-- kilogrammes-grammes (4 kg 500 g)
-- tonnes-kilogrammes (1 t 500 kg)
-- stones-pounds-ounces (14 st 2 lb 5 oz)
+- pound-ounce (8 lb 12 oz)
+- stone-pound (2 st 6 lb)
+- kilogramme-gramme (4 kg 500 g)
+- tonne-kilogramme (1 t 500 kg)
+- stone-pound-ounce (14 st 2 lb 5 oz)
 
 **2. Unitify::CompositeMeasurements::Length**
-- feet-inches (5 ft 6 in)
-- metres-centimetres (6 m 50 cm)
-- kilometres-metres (6 m 50 cm)
-- miles-yards (20 mi 220 yd)
-- miles-yards-feet (2 mi 1760 yd 8800 ft)
-- feet-inches-centimetres (9 ft 6 in 2 cm)
+- foot-inch (5 ft 6 in)
+- metre-centimetre (6 m 50 cm)
+- kilometre-metre (6 m 50 cm)
+- mile-yard (20 mi 220 yd)
+- mile-yard-foot (2 mi 1760 yd 8800 ft)
+- foot-inch-centimetre (9 ft 6 in 2 cm)
 
 **3. Unitify::CompositeMeasurements::Volume**
-- litres-millilitres (2 l 250 ml)
+- litre-millilitre (2 l 250 ml)
 
 **4. Unitify::CompositeMeasurements::Time**
-- hours-minutes (3 h 45 min)
-- minutes-seconds (10 min 90 s)
-- weeks-days (8 wk 3 d)
-- months-days (2 mo 60 d)
-- years-months (3 yr 4 mo)
-- quarters-months (3 qtr 3 mo)
-- fortnights-days (3 fn 42 d)
-- days-hours-minutes (7 d 12 h 15 min)
-- hours-minutes-seconds-microseconds (12:60:60,60)
+- hour-minute (3 h 45 min)
+- minute-second (10 min 90 s)
+- week-day (8 wk 3 d)
+- month-day (2 mo 60 d)
+- year-month (3 yr 4 mo)
+- quarter-month (3 qtr 3 mo)
+- fortnight-day (3 fn 42 d)
+- day-hour-minute (7 d 12 h 15 min)
+- hour-minute-second-microsecond (12:60:60,60)
 
 **5. Unitify::CompositeMeasurements::Area**
-- acres-square_meters (2 ac 200 m²)
-- square_feet-square_inches (7 ft² 48 in²)
-- square_feet-square_meters (500 ft² 46.45 m²)
+- acre-square_metre (2 ac 200 m²)
+- square_foot-square_inch (7 ft² 48 in²)
+- square_foot-square_metre (500 ft² 46.45 m²)
 
 ### Specifing parsers
 
