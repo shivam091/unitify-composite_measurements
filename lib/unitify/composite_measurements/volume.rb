@@ -10,28 +10,28 @@ module Unitify
       class << self
         def parse(string)
           case string
-          when LITRES_MILLILITRES_REGEX then parse_litres_millilitres(string)
-          else                               raise Unitify::ParseError, string
+          when LITRE_MILLILITRE then parse_litre_millilitre(string)
+          else                       raise Unitify::ParseError, string
           end
         end
 
         private
 
-        def parse_litres_millilitres(string)
-          litre, millilitres = string.match(LITRES_MILLILITRES_REGEX)&.captures
+        def parse_litre_millilitre(string)
+          litre, millilitre = string.match(LITRE_MILLILITRE)&.captures
 
-          if litre && millilitres
-            Unitify::Volume.new(litre, :l) + Unitify::Volume.new(millilitres, :ml)
+          if litre && millilitre
+            Unitify::Volume.new(litre, :l) + Unitify::Volume.new(millilitre, :ml)
           end
         end
       end
 
       private
 
-      LITRES_UNIT_REGEX      = /(?:l|L|liter(?:s)?|litre(?:s)?)/.freeze
-      MILLILITRES_UNIT_REGEX = /(?:ml|mL|milliliter(?:s)?|millilitre(?:s)?)/.freeze
+      LITRE_UNITS      = /(?:l|L|liter(?:s)?|litre(?:s)?)/.freeze
+      MILLILITRE_UNITS = /(?:ml|mL|milliliter(?:s)?|millilitre(?:s)?)/.freeze
 
-      LITRES_MILLILITRES_REGEX = /\A#{NUMBER_WITH_T_SPACES}#{LITRES_UNIT_REGEX}#{NUMBER_WITH_LT_SPACES}#{MILLILITRES_UNIT_REGEX}\z/.freeze
+      LITRE_MILLILITRE = /\A#{NUMBER_WITH_T_SPACES}#{LITRE_UNITS}#{NUMBER_WITH_LT_SPACES}#{MILLILITRE_UNITS}\z/.freeze
     end
   end
 end
