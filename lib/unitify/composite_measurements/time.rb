@@ -121,7 +121,7 @@ module Unitify
       YEAR_MONTH      = /\A#{NUMBER_WITH_T_SPACES}#{YEAR_UNITS}#{NUMBER_WITH_LT_SPACES}#{MONTH_UNITS}\z/.freeze
       QUARTER_MONTH   = /\A#{NUMBER_WITH_T_SPACES}#{QUARTER_UNITS}#{NUMBER_WITH_LT_SPACES}#{MONTH_UNITS}\z/.freeze
       FORTNIGHT_DAY   = /\A#{NUMBER_WITH_T_SPACES}#{FORTNIGHT_UNITS}#{NUMBER_WITH_LT_SPACES}#{DAY_UNITS}\z/.freeze
-      DURATION        = /\A(?<hour>#{ANY_NUMBER}):(?<min>#{ANY_NUMBER}):(?:(?<sec>#{ANY_NUMBER}))?(?:,(?<msec>#{ANY_NUMBER}))?\z/.freeze
+      DURATION        = /\A(?<hour>#{ANY_REAL_NUMBER}):(?<min>#{ANY_REAL_NUMBER}):(?:(?<sec>#{ANY_REAL_NUMBER}))?(?:,(?<msec>#{ANY_REAL_NUMBER}))?\z/.freeze
       DAY_HOUR_MINUTE = /\A#{NUMBER_WITH_T_SPACES}#{DAY_UNITS}#{NUMBER_WITH_LT_SPACES}#{HOUR_UNITS}#{NUMBER_WITH_LT_SPACES}#{MINUTE_UNITS}\z/.freeze
     end
   end

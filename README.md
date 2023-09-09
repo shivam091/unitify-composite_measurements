@@ -53,6 +53,21 @@ Unitify::CompositeMeasurements::Time.parse("12:60:60,60")
 > #<Unitify::Time: 13.016666683333334 #<Unitify::Unit: h (hour, hours, hr)>>
 ```
 
+Each parser has capability to parse `real`, `rational`, `scientific`, and `complex` numbers.
+
+```ruby
+Unitify::CompositeMeasurements::Length.parse("1+2i ft 12 in")
+> #<Unitify::Length: 2.0+2.0i #<Unitify::Unit: ft (', feet, foot)>>
+Unitify::CompositeMeasurements::Length.parse("1.5 ft 12e2 in")
+> #<Unitify::Length: 101.5 #<Unitify::Unit: ft (', feet, foot)>>
+Unitify::CompositeMeasurements::Length.parse("1 1/2 ft 1+2i in")
+> #<Unitify::Length: 1.5833333333333333+0.16666666666666669i #<Unitify::Unit: ft (', feet, foot)>>
+Unitify::CompositeMeasurements::Length.parse("2 ft 1+2i in")
+> #<Unitify::Length: 2.0833333333333335+0.16666666666666669i #<Unitify::Unit: ft (', feet, foot)>>
+Unitify::CompositeMeasurements::Length.parse("1e-2 ft 1+2i in")
+> #<Unitify::Length: 0.09333333333333334+0.16666666666666669i #<Unitify::Unit: ft (', feet, foot)>>
+```
+
 ## Packaged parsers & supported composite measurements
 
 There are tons of composite measurements that are bundled with `unitify-composite_measurements`.

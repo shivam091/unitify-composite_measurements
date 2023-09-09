@@ -1,3 +1,9 @@
+## [0.2.0](https://github.com/shivam091/unitify-composite_measurements/compare/v0.1.3...v0.2.0) - 2023-09-09
+
+### What's new
+
+- Added support to parse `rational`, `real`, `scientific`, and `complex` numbers in measurements.
+
 ## [0.1.3](https://github.com/shivam091/unitify-composite_measurements/compare/v0.1.2...v0.1.3) - 2023-09-08
 
 ### What's new
