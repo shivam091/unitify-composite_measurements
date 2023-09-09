@@ -85,20 +85,33 @@ There are tons of composite measurements that are bundled with `unitify-composit
 - kilometre-metre (6 m 50 cm)
 - mile-yard (20 mi 220 yd)
 - mile-yard-foot (2 mi 1760 yd 8800 ft)
+- foot-inch-yard (9 ft 6 in 5/16 yd)
 - foot-inch-centimetre (9 ft 6 in 2 cm)
+- mile-furlong-yard (12 mi 3 fur 300 yd)
+- chain-foot-inch (1 ch 66 ft 792 in)
+- fathom-foot-inch (2 ftm 12 ft 144 in)
+- furlong-chain-foot (5 fur 40 ch 660 ft)
+- kilometre-metre-millimetre (9 km 500 m 3 mm)
+- foot-inch-millimetre (3 ft 6 in 90 mm)
 
 **3. Unitify::CompositeMeasurements::Volume**
 - litre-millilitre (2 l 250 ml)
+- cubic_metres-cubic_centimetres (0.5 m³ 1000 cm³)
 
 **4. Unitify::CompositeMeasurements::Time**
 - hour-minute (3 h 45 min)
 - minute-second (10 min 90 s)
+- second-millisecond (8 s 500 ms)
 - week-day (8 wk 3 d)
 - month-day (2 mo 60 d)
 - year-month (3 yr 4 mo)
 - quarter-month (3 qtr 3 mo)
 - fortnight-day (3 fn 42 d)
 - day-hour-minute (7 d 12 h 15 min)
+- week-day-hour (2 wk 3 d 6 h)
+- month-week-day (6 mo 2 wk 4 d)
+- year-month-day (15 yr 9 mo 20 d)
+- hour-minute-second (2 h 30 min 45 s)
 - hour-minute-second-microsecond (12:60:60,60)
 
 **5. Unitify::CompositeMeasurements::Area**
