@@ -4,6 +4,6 @@
 
 RSpec.describe Unitify::CompositeMeasurements do
   it "has a valid version number" do
-    expect(Unitify::CompositeMeasurements::VERSION).to eq("0.1.3")
+    expect(Unitify::CompositeMeasurements::VERSION).to eq("0.2.0")
   end
 end
